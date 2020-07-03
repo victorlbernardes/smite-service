@@ -1,0 +1,17 @@
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\controller\InfoStatusController.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\security\UserDetailsServiceImpl.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\security\WebSecurityConfig.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\model\SmiteApiModel.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\repository\PlayerRepository.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\security\AccountCredentials.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\Entity\Player.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\security\JWTAuthenticationFilter.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\SmiteServiceApplication.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\utils\Utils.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\model\Session.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\security\TokenAuthenticationService.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\service\InfoStatusService.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\controller\PlayerController.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\security\JWTLoginFilter.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\service\PlayerService.java
+C:\Users\Victor\Documents\Projetos\smite-service\src\main\java\br\com\victor\smite\smitestatus\client\HiRezSmiteApi.java

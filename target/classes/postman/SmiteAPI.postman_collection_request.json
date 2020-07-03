@@ -1,0 +1,1136 @@
+{
+	"info": {
+		"_postman_id": "3d266c1d-2340-483c-8067-609c80a36dea",
+		"name": "SmiteAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HiRezAPI Status Ping",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getesportsproleaguedetails' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "efa94672-e962-4d42-aa68-e126fba687c2"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/pingjson",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"pingjson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create session",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"session_id\", data.session_id);"
+						],
+						"id": "2c0b11f0-103d-43e6-9840-39890f835e67"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'createsession' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "503514f5-603c-4a91-b028-fb1ab75a17b0"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/createsessionJson/{{devId}}/{{signature}}/{{timestamp}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"createsessionJson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{timestamp}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HiRezAPI session established",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'testsession' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "0a0ccdef-a946-487c-8d7b-911def8a4317"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/testsessionjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"testsessionjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HiRezAPI DataUsage",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getdataused' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "9519f96e-679b-4ef0-be3f-0b20722acb95"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getdatausedjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getdatausedjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Smite Status Server",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'gethirezserverstatus' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "654e4dee-96cc-4a2e-ac65-e18bed211b7b"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/gethirezserverstatusjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"gethirezserverstatusjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Smite Patch Version",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getpatchinfo' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "bf06fa9b-8e76-4bc2-9791-08ff67a20b51"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getpatchinfojson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getpatchinfojson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Itens",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getitems' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "f820b461-a9a8-4130-b02e-d8d15fb3511f"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getitemsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getitemsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Gods",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getgods' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "89648a0b-95c0-4a85-9216-248029a44785"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getgodsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getgodsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get God Skin",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getgodskins' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "821f71d0-c2e3-4929-8a94-4d92b634c4a0"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getgodskinsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/1919/1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getgodskinsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"1919",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Recommended Items",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getgodrecommendeditems' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "5f2fb1c4-8bea-4fce-bbb1-07e15e1d370e"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getgodrecommendeditemsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/1919/1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getgodrecommendeditemsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"1919",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player By Name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getplayeridbyname' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "d460a734-cb78-4c42-b66e-ace7c8f35b65"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getplayeridbynamejson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/Akillian",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getplayeridbynamejson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"Akillian"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player By ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getplayer' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "ecbf2bb5-820f-4e76-930c-5965dc46acc5"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getplayerjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/10776695",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getplayerjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"10776695"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player Status",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getplayerstatus' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "a6a5a563-36d1-4d69-bd07-abe6329ddb62"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getplayerstatusjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/10776695",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getplayerstatusjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"10776695"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player Friends",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getfriends' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "1eaf091c-0eee-4017-bb7e-c2402b077839"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getfriendsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/10776695",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getfriendsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"10776695"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player God Ranks",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getgodranks' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "7c715ed9-caaf-417c-9204-200f6b51dd22"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getgodranksjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/10776695",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getgodranksjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"10776695"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player Achievements",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getplayerachievements' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "00f5f7ed-3fc9-4614-9ea2-d8a891031722"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getplayerachievementsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/10776695",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getplayerachievementsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"10776695"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player match history",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getmatchhistory' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "74e24c41-9811-4594-9a23-4655a443be05"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getmatchhistoryjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/10776695",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getmatchhistoryjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"10776695"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Mode Details",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getdemodetails' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "3ee7f39c-74f1-4602-9521-4e68a1a21064"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getdemodetailsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/1056408948",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getdemodetailsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"1056408948"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Match Details",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getmatchdetails' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "eea4a7b2-d3bf-4c5a-8976-2530dfd2a8e3"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getmatchdetailsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/1056408948",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getmatchdetailsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"1056408948"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Match Details From a Live Match",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getmatchplayerdetails' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "9b28862e-c943-4243-855a-66e986242c7a"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getmatchplayerdetailsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/1056408948",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getmatchplayerdetailsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"1056408948"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Clan Details",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getteamdetails' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "e004aabc-40d0-4c04-ad60-5f3fed0b4974"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getteamdetailsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/841800",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getteamdetailsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"841800"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Clan Players ",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getteamplayers' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "b93bdb1f-fa26-4a72-a0ce-5c5f0d5e27f6"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getteamplayersjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/841800",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getteamplayersjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"841800"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Clans by Names ",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'searchteams' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "4b5dd210-0722-4c7f-96ed-abdd32a972d5"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/searchteamsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}/Team Maya",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"searchteamsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}",
+						"Team Maya"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Match of Day",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getmotd' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "e57fb4c7-b0e0-4a3d-a466-7743bcbece38"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getmotdjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getmotdjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ESport Pro League Season",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const moment = require('moment');",
+							"postman.setEnvironmentVariable(\"timestamp\", moment().utc().format(\"YYYYMMDDHHmmss\"));",
+							"",
+							"var devId = pm.environment.get(\"devId\");",
+							"var authKey = pm.environment.get(\"authKey\");",
+							"var timestamp = pm.environment.get(\"timestamp\");",
+							"var hash = CryptoJS.MD5(devId + 'getesportsproleaguedetails' + authKey + timestamp).toString();",
+							"postman.setEnvironmentVariable('signature', hash);"
+						],
+						"id": "724cbefa-bf4f-48b4-a270-ce598fc5b5a4"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.smitegame.com/smiteapi.svc/getesportsproleaguedetailsjson/{{devId}}/{{signature}}/{{session_id}}/{{timestamp}}",
+					"protocol": "http",
+					"host": [
+						"api",
+						"smitegame",
+						"com"
+					],
+					"path": [
+						"smiteapi.svc",
+						"getesportsproleaguedetailsjson",
+						"{{devId}}",
+						"{{signature}}",
+						"{{session_id}}",
+						"{{timestamp}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

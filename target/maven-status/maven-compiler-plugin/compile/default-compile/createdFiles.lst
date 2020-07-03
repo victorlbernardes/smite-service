@@ -1,0 +1,17 @@
+br\com\victor\smite\smitestatus\security\JWTAuthenticationFilter.class
+br\com\victor\smite\smitestatus\model\Session.class
+br\com\victor\smite\smitestatus\security\AccountCredentials.class
+br\com\victor\smite\smitestatus\SmiteServiceApplication.class
+br\com\victor\smite\smitestatus\security\WebSecurityConfig.class
+br\com\victor\smite\smitestatus\security\JWTLoginFilter.class
+br\com\victor\smite\smitestatus\Entity\Player.class
+br\com\victor\smite\smitestatus\service\PlayerService.class
+br\com\victor\smite\smitestatus\security\TokenAuthenticationService.class
+br\com\victor\smite\smitestatus\security\UserDetailsServiceImpl.class
+br\com\victor\smite\smitestatus\controller\PlayerController.class
+br\com\victor\smite\smitestatus\repository\PlayerRepository.class
+br\com\victor\smite\smitestatus\utils\Utils.class
+br\com\victor\smite\smitestatus\client\HiRezSmiteApi.class
+br\com\victor\smite\smitestatus\service\InfoStatusService.class
+br\com\victor\smite\smitestatus\controller\InfoStatusController.class
+br\com\victor\smite\smitestatus\model\SmiteApiModel.class

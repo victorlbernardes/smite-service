@@ -1,0 +1,34 @@
+hirez-smite-api.url: http://api.smitegame.com/smiteapi.svc
+dev_id.key: 3526
+auth.key: AA366665EEDE460781FB6DB7788F674C
+
+###
+#   Database Settings
+###
+spring:
+  datasource:
+    url: jdbc:h2:mem:smite-service;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    platform: h2
+    username: admin
+    password: teammaya
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+
+  ###
+  #   H2 Settings
+  ###
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false
