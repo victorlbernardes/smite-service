@@ -1,7 +1,5 @@
 package br.com.victor.smite.smitestatus.controller;
 
-import br.com.victor.smite.smitestatus.Entity.Player;
-import br.com.victor.smite.smitestatus.repository.PlayerRepository;
 import br.com.victor.smite.smitestatus.service.InfoStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,12 +13,10 @@ public class InfoStatusController {
 
     @Autowired
     private InfoStatusService infoStatusService;
-    @Autowired
-    private PlayerRepository repository;
 
     @GetMapping("/ping")
-    public Iterable<Player> ping() {
+    public String ping() {
 
-        return this.repository.findAll();
+        return this.infoStatusService.ping();
     }
 }
