@@ -6,6 +6,7 @@ import br.com.victor.smite.model.HiRezServerStatus;
 import br.com.victor.smite.service.InfoStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,22 +27,22 @@ public class InfoStatusController {
     }
 
     @GetMapping("/test-session")
-    public String testSession(@RequestParam(value = "sessionId") String sessionId) {
-        return this.infoStatusService.testSession(sessionId);
+    public String testSession(Authentication authentication) {
+        return this.infoStatusService.testSession(authentication.getPrincipal().toString());
     }
 
     @GetMapping("/data-usage")
-    public List<DataUsage> dataUsage(@RequestParam(value = "sessionId") String sessionId) {
-        return this.infoStatusService.dataUsage(sessionId);
+    public List<DataUsage> dataUsage(Authentication authentication) {
+        return this.infoStatusService.dataUsage(authentication.getPrincipal().toString());
     }
 
     @GetMapping("/hi-rez-server-status")
-    public List<HiRezServerStatus> hiRezServerStatus(@RequestParam(value = "sessionId") String sessionId) {
-        return this.infoStatusService.hiRezServerStatus(sessionId);
+    public List<HiRezServerStatus> hiRezServerStatus(Authentication authentication) {
+        return this.infoStatusService.hiRezServerStatus(authentication.getPrincipal().toString());
     }
 
     @GetMapping("/smite-patch-version")
-    public HiRezPatchVersion smitePatchVersion(@RequestParam(value = "sessionId") String sessionId) {
-        return this.infoStatusService.smitePatchVersion(sessionId);
+    public HiRezPatchVersion smitePatchVersion(Authentication authentication) {
+        return this.infoStatusService.smitePatchVersion(authentication.getPrincipal().toString());
     }
 }

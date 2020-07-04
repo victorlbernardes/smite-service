@@ -1,7 +1,9 @@
 package br.com.victor.smite.service;
 
+import br.com.victor.smite.Entity.Player;
 import br.com.victor.smite.client.HiRezSmiteApi;
 import br.com.victor.smite.model.Item;
+import br.com.victor.smite.repository.PlayerRepository;
 import br.com.victor.smite.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +17,8 @@ public class GeneralService {
     private String devId;
     @Value("${auth.key}")
     private String authKey;
+    @Autowired
+    private PlayerRepository playerRepository;
 
     private String date;
     private String signature;
@@ -22,15 +26,17 @@ public class GeneralService {
     @Autowired
     private final HiRezSmiteApi hiRezSmiteApi;
 
-    public GeneralService(HiRezSmiteApi hiRezSmiteApi) {
+    public GeneralService(HiRezSmiteApi hiRezSmiteApi, PlayerRepository playerRepository) {
         this.hiRezSmiteApi = hiRezSmiteApi;
+        this.playerRepository = playerRepository;
         this.date = Utils.getTimestampFormatted();
     }
 
-    public List<Item> getAllItens(String sessionId, Integer language) {
+    public List<Item> getAllItens(String username, Integer language) {
 
+        Player player = playerRepository.findByUsername(username);
         this.signature = Utils.getHash(devId, "getitems", authKey, this.date);
-        return hiRezSmiteApi.getAllItems(devId, this.signature, sessionId, this.date, language);
+        return hiRezSmiteApi.getAllItems(devId, this.signature, player.getLastSessionId(), this.date, language);
 
     }
 }

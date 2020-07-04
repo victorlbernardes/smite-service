@@ -4,6 +4,7 @@ import br.com.victor.smite.model.Item;
 import br.com.victor.smite.service.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +20,8 @@ public class GeneralController {
     private GeneralService generalService;
 
     @GetMapping("/get-items")
-    public List<Item> getAllItens(@RequestParam(value = "sessionId") String sessionId, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
+    public List<Item> getAllItens(Authentication authentication, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
 
-        return this.generalService.getAllItens(sessionId, Integer.parseInt(language));
+        return this.generalService.getAllItens(authentication.getPrincipal().toString(), Integer.parseInt(language));
     }
 }
