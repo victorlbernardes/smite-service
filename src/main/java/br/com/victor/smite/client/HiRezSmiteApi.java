@@ -24,7 +24,7 @@ public interface HiRezSmiteApi {
     List<HiRezServerStatus> hiRezServerStatus(@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp);
 
     @GetMapping("/getpatchinfojson/{devId}/{signature}/{sessionId}/{timestamp}")
-    HiRezPatchVersion smitePatchVersion(@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp);
+    SmitePatchVersion smitePatchVersion(@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp);
 
     @GetMapping("/createsessionJson/{devId}/{signature}/{timestamp}")
     Session createSession(@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("timestamp") String timestamp );

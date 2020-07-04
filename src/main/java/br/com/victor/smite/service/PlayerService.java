@@ -22,7 +22,7 @@ public class PlayerService {
     @Autowired
     private final HiRezSmiteApi hiRezSmiteApi;
     @Autowired
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
     public PlayerService(HiRezSmiteApi hiRezSmiteApi, PlayerRepository playerRepository) {
         this.hiRezSmiteApi = hiRezSmiteApi;
@@ -30,7 +30,7 @@ public class PlayerService {
         this.date = Utils.getTimestampFormatted();
     }
 
-    public Player createSession(String username) {
+    public Session createSession(String username) {
 
         this.signature = Utils.getHash(devId, "createsession", authKey, this.date);
 
@@ -38,7 +38,8 @@ public class PlayerService {
         Player player = playerRepository.findByUsername(username);
 
         player.setLastSessionId(session.getSessionId());
-        return playerRepository.save(player);
+        playerRepository.save(player);
+        return session;
 
     }
 

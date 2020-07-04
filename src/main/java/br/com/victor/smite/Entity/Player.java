@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Player {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @JsonProperty("player_id")
     private String playerId;

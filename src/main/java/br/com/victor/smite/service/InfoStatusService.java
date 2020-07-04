@@ -2,7 +2,7 @@ package br.com.victor.smite.service;
 
 import br.com.victor.smite.Entity.Player;
 import br.com.victor.smite.model.DataUsage;
-import br.com.victor.smite.model.HiRezPatchVersion;
+import br.com.victor.smite.model.SmitePatchVersion;
 import br.com.victor.smite.model.HiRezServerStatus;
 import br.com.victor.smite.client.HiRezSmiteApi;
 import br.com.victor.smite.repository.PlayerRepository;
@@ -20,7 +20,7 @@ public class InfoStatusService {
     @Value("${auth.key}")
     private String authKey;
     @Autowired
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
     
     private String date;
     private String signature;
@@ -57,7 +57,7 @@ public class InfoStatusService {
         return hiRezSmiteApi.hiRezServerStatus(devId, this.signature, player.getLastSessionId(), this.date);
     }
 
-    public HiRezPatchVersion smitePatchVersion(String username) {
+    public SmitePatchVersion smitePatchVersion(String username) {
         Player player = playerRepository.findByUsername(username);
         this.signature = Utils.getHash(devId, "getpatchinfo", authKey, this.date);
         return hiRezSmiteApi.smitePatchVersion(devId, this.signature, player.getLastSessionId(), this.date);

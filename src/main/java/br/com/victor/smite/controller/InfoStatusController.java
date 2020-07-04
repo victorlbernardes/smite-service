@@ -1,7 +1,7 @@
 package br.com.victor.smite.controller;
 
 import br.com.victor.smite.model.DataUsage;
-import br.com.victor.smite.model.HiRezPatchVersion;
+import br.com.victor.smite.model.SmitePatchVersion;
 import br.com.victor.smite.model.HiRezServerStatus;
 import br.com.victor.smite.service.InfoStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -42,7 +41,7 @@ public class InfoStatusController {
     }
 
     @GetMapping("/smite-patch-version")
-    public HiRezPatchVersion smitePatchVersion(Authentication authentication) {
+    public SmitePatchVersion smitePatchVersion(Authentication authentication) {
         return this.infoStatusService.smitePatchVersion(authentication.getPrincipal().toString());
     }
 }

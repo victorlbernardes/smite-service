@@ -1,6 +1,6 @@
 package br.com.victor.smite.controller;
 
-import br.com.victor.smite.Entity.Player;
+import br.com.victor.smite.model.Session;
 import br.com.victor.smite.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,7 +17,7 @@ public class PlayerController {
     private PlayerService playerService;
 
     @GetMapping("/create-session")
-    public Player createSession(Authentication authentication) {
+    public Session createSession(Authentication authentication) {
         return this.playerService.createSession(authentication.getPrincipal().toString());
     }
 
