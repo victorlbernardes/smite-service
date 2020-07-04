@@ -1,4 +1,4 @@
-package br.com.victor.smite.Entity;
+package br.com.victor.smite.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

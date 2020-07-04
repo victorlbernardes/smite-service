@@ -1,6 +1,6 @@
 package br.com.victor.smite.service;
 
-import br.com.victor.smite.Entity.Player;
+import br.com.victor.smite.entity.Player;
 import br.com.victor.smite.model.Session;
 import br.com.victor.smite.repository.PlayerRepository;
 import br.com.victor.smite.client.HiRezSmiteApi;

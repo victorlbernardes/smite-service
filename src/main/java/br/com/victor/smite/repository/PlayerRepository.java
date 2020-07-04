@@ -1,7 +1,7 @@
 package br.com.victor.smite.repository;
 
 
-import br.com.victor.smite.Entity.Player;
+import br.com.victor.smite.entity.Player;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

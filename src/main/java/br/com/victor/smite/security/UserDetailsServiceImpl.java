@@ -1,7 +1,7 @@
 package br.com.victor.smite.security;
 
 import br.com.victor.smite.repository.PlayerRepository;
-import br.com.victor.smite.Entity.Player;
+import br.com.victor.smite.entity.Player;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
