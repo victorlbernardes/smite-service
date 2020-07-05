@@ -10,5 +10,5 @@ Back-End que comunica com API da Hi-Rez para recuperar as informações geradas 
 
 ### Features
 
-Tarefas foram adicionados no board do projeto. [Project](https://github.com/victorlbernardes/smite-service/projects/1)
+Tarefas foram adicionados no board do [Projeto](https://github.com/victorlbernardes/smite-service/projects/1).
 
