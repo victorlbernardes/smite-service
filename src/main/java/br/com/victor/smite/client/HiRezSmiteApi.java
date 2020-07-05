@@ -1,6 +1,7 @@
 package br.com.victor.smite.client;
 
 import br.com.victor.smite.model.*;
+import br.com.victor.smite.utils.GodSkin;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,16 @@ public interface HiRezSmiteApi {
     Session createSession(@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("timestamp") String timestamp );
 
     /* Endpoints para recuperar informacoes gerais do jogo*/
-    @GetMapping("/getitemsJson/{devId}/{signature}/{sessionId}/{timestamp}/{language}")
+    @GetMapping("/getitemsjson/{devId}/{signature}/{sessionId}/{timestamp}/{language}")
     List<Item> getAllItems(@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp, @PathVariable("language") Integer language );
+
+    @GetMapping("/getgodsjson/{devId}/{signature}/{sessionId}/{timestamp}/{language}")
+    List<God> getAllGods(@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp, @PathVariable("language") Integer language );
+
+    @GetMapping("/getgodskinsjson/{devId}/{signature}/{sessionId}/{timestamp}/{godId}/{language}")
+    List<GodSkin> getAllGodSkin (@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp, @PathVariable("godId") Integer godId, @PathVariable("language") Integer language);
+
+    @GetMapping("/getgodrecommendeditemsjson/{devId}/{signature}/{sessionId}/{timestamp}/{godId}/{language}")
+    List<GodRecommendedItems> getGodRecommendedItems (@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp, @PathVariable("godId") Integer godId, @PathVariable("language") Integer language);
 
 }

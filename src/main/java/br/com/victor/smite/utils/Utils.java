@@ -31,10 +31,8 @@ public class Utils {
     }
 
     public static String getTimestampFormatted() {
-
         LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
         return formatter.format(now);
-
     }
 }

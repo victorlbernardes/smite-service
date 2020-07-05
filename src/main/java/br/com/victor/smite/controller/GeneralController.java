@@ -1,7 +1,10 @@
 package br.com.victor.smite.controller;
 
+import br.com.victor.smite.model.God;
+import br.com.victor.smite.model.GodRecommendedItems;
 import br.com.victor.smite.model.Item;
 import br.com.victor.smite.service.GeneralService;
+import br.com.victor.smite.utils.GodSkin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -21,7 +24,21 @@ public class GeneralController {
 
     @GetMapping("/get-items")
     public List<Item> getAllItens(Authentication authentication, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
-
         return this.generalService.getAllItens(authentication.getPrincipal().toString(), Integer.parseInt(language));
+    }
+
+    @GetMapping("/get-gods")
+    public List<God> getAllGods(Authentication authentication, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
+        return this.generalService.getAllGods(authentication.getPrincipal().toString(), Integer.parseInt(language));
+    }
+
+    @GetMapping("/all-god-skin")
+    public List<GodSkin> getAllGodSkin(Authentication authentication, @RequestParam(value = "godId") int godId, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
+        return this.generalService.getAllGodSkin(authentication.getPrincipal().toString(), godId, Integer.parseInt(language));
+    }
+
+    @GetMapping("/god-recommended-items")
+    public List<GodRecommendedItems> getGodRecommendedItems(Authentication authentication, @RequestParam(value = "godId") int godId, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
+        return this.generalService.getGodRecommendedItems(authentication.getPrincipal().toString(), godId, Integer.parseInt(language));
     }
 }
