@@ -9,6 +9,8 @@ import br.com.victor.smite.model.ProLeagueSeasonDetail;
 import br.com.victor.smite.repository.PlayerRepository;
 import br.com.victor.smite.utils.GodSkin;
 import br.com.victor.smite.utils.Utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,8 @@ public class GeneralService {
     private String date;
     private String signature;
 
+    Logger logger = LoggerFactory.getLogger(GeneralService.class);
+
     @Autowired
     private final HiRezSmiteApi hiRezSmiteApi;
 
@@ -37,7 +41,7 @@ public class GeneralService {
     }
 
     public List<Item> getAllItens(String username, Integer language) {
-
+        logger.info("getAllItens");
         Player player = playerRepository.findByUsername(username);
         this.signature = Utils.getHash(devId, "getitems", authKey, this.date);
         return hiRezSmiteApi.getAllItems(devId, this.signature, player.getLastSessionId(), this.date, language);
@@ -45,7 +49,7 @@ public class GeneralService {
     }
 
     public List<God> getAllGods(String username, Integer language) {
-
+        logger.info("getAllGods");
         Player player = playerRepository.findByUsername(username);
         this.signature = Utils.getHash(devId, "getgods", authKey, this.date);
         return hiRezSmiteApi.getAllGods(devId, this.signature, player.getLastSessionId(), this.date, language);
@@ -53,7 +57,7 @@ public class GeneralService {
     }
 
     public List<GodSkin> getAllGodSkin(String username, int godId, Integer language) {
-
+        logger.info("getAllGodSkin");
         Player player = playerRepository.findByUsername(username);
         this.signature = Utils.getHash(devId, "getgodskins", authKey, this.date);
         return hiRezSmiteApi.getAllGodSkin(devId, this.signature, player.getLastSessionId(), this.date, godId, language);
@@ -61,7 +65,7 @@ public class GeneralService {
     }
 
     public List<GodRecommendedItems> getGodRecommendedItems(String username, int godId, Integer language) {
-
+        logger.info("getGodRecommendedItems");
         Player player = playerRepository.findByUsername(username);
         this.signature = Utils.getHash(devId, "getgodrecommendeditems", authKey, this.date);
         return hiRezSmiteApi.getGodRecommendedItems(devId, this.signature, player.getLastSessionId(), this.date, godId, language);
@@ -69,6 +73,7 @@ public class GeneralService {
     }
 
     public List<ProLeagueSeasonDetail> proLeagueSeason(String username) {
+        logger.info("proLeagueSeason");
         Player player = playerRepository.findByUsername(username);
         this.signature = Utils.getHash(devId, "getesportsproleaguedetails", authKey, this.date);
         return hiRezSmiteApi.proLeagueSeason(devId, this.signature, player.getLastSessionId(), this.date);
