@@ -5,6 +5,7 @@ import br.com.victor.smite.client.HiRezSmiteApi;
 import br.com.victor.smite.model.God;
 import br.com.victor.smite.model.GodRecommendedItems;
 import br.com.victor.smite.model.Item;
+import br.com.victor.smite.model.ProLeagueSeasonDetail;
 import br.com.victor.smite.repository.PlayerRepository;
 import br.com.victor.smite.utils.GodSkin;
 import br.com.victor.smite.utils.Utils;
@@ -65,5 +66,11 @@ public class GeneralService {
         this.signature = Utils.getHash(devId, "getgodrecommendeditems", authKey, this.date);
         return hiRezSmiteApi.getGodRecommendedItems(devId, this.signature, player.getLastSessionId(), this.date, godId, language);
 
+    }
+
+    public List<ProLeagueSeasonDetail> proLeagueSeason(String username) {
+        Player player = playerRepository.findByUsername(username);
+        this.signature = Utils.getHash(devId, "getesportsproleaguedetails", authKey, this.date);
+        return hiRezSmiteApi.proLeagueSeason(devId, this.signature, player.getLastSessionId(), this.date);
     }
 }

@@ -3,6 +3,7 @@ package br.com.victor.smite.controller;
 import br.com.victor.smite.model.God;
 import br.com.victor.smite.model.GodRecommendedItems;
 import br.com.victor.smite.model.Item;
+import br.com.victor.smite.model.ProLeagueSeasonDetail;
 import br.com.victor.smite.service.GeneralService;
 import br.com.victor.smite.utils.GodSkin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,10 @@ public class GeneralController {
     @GetMapping("/god-recommended-items")
     public List<GodRecommendedItems> getGodRecommendedItems(Authentication authentication, @RequestParam(value = "godId") int godId, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
         return this.generalService.getGodRecommendedItems(authentication.getPrincipal().toString(), godId, Integer.parseInt(language));
+    }
+
+    @GetMapping("/pro-league-season")
+    public List<ProLeagueSeasonDetail> proLeagueSeason(Authentication authentication) {
+        return this.generalService.proLeagueSeason(authentication.getPrincipal().toString());
     }
 }

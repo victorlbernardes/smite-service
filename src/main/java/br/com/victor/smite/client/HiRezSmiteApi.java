@@ -43,4 +43,7 @@ public interface HiRezSmiteApi {
     @GetMapping("/getgodrecommendeditemsjson/{devId}/{signature}/{sessionId}/{timestamp}/{godId}/{language}")
     List<GodRecommendedItems> getGodRecommendedItems (@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp, @PathVariable("godId") Integer godId, @PathVariable("language") Integer language);
 
+    @GetMapping("/getesportsproleaguedetailsjson/{devId}/{signature}/{sessionId}/{timestamp}")
+    List<ProLeagueSeasonDetail> proLeagueSeason (@PathVariable("devId") String devId, @PathVariable("signature") String signature, @PathVariable("sessionId") String sessionId, @PathVariable("timestamp") String timestamp);
+
 }

@@ -5,6 +5,7 @@ import br.com.victor.smite.entity.Player;
 import br.com.victor.smite.model.God;
 import br.com.victor.smite.model.GodRecommendedItems;
 import br.com.victor.smite.model.Item;
+import br.com.victor.smite.model.ProLeagueSeasonDetail;
 import br.com.victor.smite.repository.PlayerRepository;
 import br.com.victor.smite.utils.GodSkin;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -86,8 +87,8 @@ public class GerneralServiceTest {
         when(hiRezSmiteApi.getAllGodSkin(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(createdGodSkinSuccess());
         when(playerRepository.findByUsername(USERNAME)).thenReturn(playerSuccess());
 
-        List<GodSkin> listGods = generalService.getAllGodSkin(USERNAME, 1, 1);
-        Assert.assertEquals(2, listGods.size());
+        List<GodSkin> godSkinList = generalService.getAllGodSkin(USERNAME, 1, 1);
+        Assert.assertEquals(2, godSkinList.size());
     }
 
     @DisplayName("Testin Get All God Skin Fail")
@@ -96,8 +97,8 @@ public class GerneralServiceTest {
         when(hiRezSmiteApi.getAllGodSkin(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(createdGodSkinFail());
         when(playerRepository.findByUsername(USERNAME)).thenReturn(playerSuccess());
 
-        List<GodSkin> listGods = generalService.getAllGodSkin(USERNAME, 1, 1);
-        Assert.assertEquals(1, listGods.size());
+        List<GodSkin> godSkinList = generalService.getAllGodSkin(USERNAME, 1, 1);
+        Assert.assertEquals(1, godSkinList.size());
     }
 
     @DisplayName("Testing Get God Recommended Items Success")
@@ -106,8 +107,8 @@ public class GerneralServiceTest {
         when(hiRezSmiteApi.getGodRecommendedItems(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(createdGodRecommendedItemsSuccess());
         when(playerRepository.findByUsername(USERNAME)).thenReturn(playerSuccess());
 
-        List<GodRecommendedItems> listGods = generalService.getGodRecommendedItems(USERNAME, 1, 1);
-        Assert.assertEquals(2, listGods.size());
+        List<GodRecommendedItems> recommendedItemsList = generalService.getGodRecommendedItems(USERNAME, 1, 1);
+        Assert.assertEquals(2, recommendedItemsList.size());
     }
 
     @DisplayName("Testing Get God Recommended Items Fail")
@@ -116,8 +117,28 @@ public class GerneralServiceTest {
         when(hiRezSmiteApi.getGodRecommendedItems(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(createdGodRecommendedItemsFail());
         when(playerRepository.findByUsername(USERNAME)).thenReturn(playerSuccess());
 
-        List<GodRecommendedItems> listGods = generalService.getGodRecommendedItems(USERNAME, 1, 1);
-        Assert.assertEquals(1, listGods.size());
+        List<GodRecommendedItems> recommendedItemsList = generalService.getGodRecommendedItems(USERNAME, 1, 1);
+        Assert.assertEquals(1, recommendedItemsList.size());
+    }
+
+    @DisplayName("Testing Get Pro League Season Success")
+    @Test
+    public void testProLeagueSeason_Success() {
+        when(hiRezSmiteApi.proLeagueSeason(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(createdProLeagueSeasonSuccess());
+        when(playerRepository.findByUsername(USERNAME)).thenReturn(playerSuccess());
+
+        List<ProLeagueSeasonDetail> proLeagueSeasonDetailList = generalService.proLeagueSeason(USERNAME);
+        Assert.assertEquals(2, proLeagueSeasonDetailList.size());
+    }
+
+    @DisplayName("Testing Get Pro League Season Fail")
+    @Test
+    public void testProLeagueSeason_Fail() {
+        when(hiRezSmiteApi.proLeagueSeason(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(createdProLeagueSeasonFail());
+        when(playerRepository.findByUsername(USERNAME)).thenReturn(playerSuccess());
+
+        List<ProLeagueSeasonDetail> proLeagueSeasonDetailList = generalService.proLeagueSeason(USERNAME);
+        Assert.assertEquals(1, proLeagueSeasonDetailList.size());
     }
 
     private Object newMock(String json, Class<?> clazz) {
@@ -173,6 +194,16 @@ public class GerneralServiceTest {
     private List<GodRecommendedItems> createdGodRecommendedItemsFail()  {
         String json = "[{\"Category\":null,\"Item\":null,\"Role\":null,\"category_value_id\":0,\"god_id\":0,\"god_name\":null,\"icon_id\":0,\"item_id\":0,\"ret_msg\":\"Invalid session id.\",\"role_value_id\":0}]";
         return (List<GodRecommendedItems>) newMock(json, List.class);
+    }
+
+    private List<ProLeagueSeasonDetail> createdProLeagueSeasonSuccess()  {
+        String json = "[{\"away_team_clan_id\":898,\"away_team_name\":\"eUnited\",\"away_team_tagname\":\"EUN\",\"home_team_clan_id\":903,\"home_team_name\":\"Ghost Gaming\",\"home_team_tagname\":\"RVL\",\"map_instance_id\":\"0\",\"match_date\":\"4/4/2020 7:00:00 PM\",\"match_number\":\"1\",\"match_status\":\"ended\",\"matchup_id\":\"9219\",\"region\":\"NA\",\"ret_msg\":null,\"tournament_name\":\"Dev Event Season 7\",\"winning_team_clan_id\":898},{\"away_team_clan_id\":901,\"away_team_name\":\"Knights\",\"away_team_tagname\":\"PK\",\"home_team_clan_id\":900,\"home_team_name\":\"Radiance\",\"home_team_tagname\":\"GHOST\",\"map_instance_id\":\"0\",\"match_date\":\"4/4/2020 9:00:00 PM\",\"match_number\":\"1\",\"match_status\":\"ended\",\"matchup_id\":\"9220\",\"region\":\"NA\",\"ret_msg\":null,\"tournament_name\":\"Dev Event Season 7\",\"winning_team_clan_id\":900}]";
+        return (List<ProLeagueSeasonDetail>) newMock(json, List.class);
+    }
+
+    private List<ProLeagueSeasonDetail> createdProLeagueSeasonFail()  {
+        String json = "[{\"away_team_clan_id\":null,\"away_team_name\":null,\"away_team_tagname\":null,\"home_team_clan_id\":null,\"home_team_name\":null,\"home_team_tagname\":null,\"map_instance_id\":null,\"match_date\":null,\"match_number\":null,\"match_status\":null,\"matchup_id\":null,\"region\":null,\"ret_msg\":\"Invalid SeasonId.\",\"tournament_name\":null,\"winning_team_clan_id\":null}]";
+        return (List<ProLeagueSeasonDetail>) newMock(json, List.class);
     }
 
 }
