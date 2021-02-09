@@ -1,6 +1,6 @@
-package br.com.victor.smite;
+package br.com.victor.smite.configuration;
 
-import br.com.victor.smite.client.HiRezSmiteApi;
+import br.com.victor.smite.service.client.HiRezSmiteApi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

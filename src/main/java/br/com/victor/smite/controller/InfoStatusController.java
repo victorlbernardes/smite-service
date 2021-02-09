@@ -1,10 +1,9 @@
 package br.com.victor.smite.controller;
 
-import br.com.victor.smite.model.DataUsage;
-import br.com.victor.smite.model.SmitePatchVersion;
-import br.com.victor.smite.model.HiRezServerStatus;
+import br.com.victor.smite.service.client.response.DataUsage;
+import br.com.victor.smite.service.client.response.SmitePatchVersion;
+import br.com.victor.smite.service.client.response.HiRezServerStatus;
 import br.com.victor.smite.service.InfoStatusService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +16,11 @@ import java.util.List;
 @RequestMapping(path = "/info/status", produces = MediaType.APPLICATION_JSON_VALUE)
 public class InfoStatusController {
 
-    @Autowired
     private InfoStatusService infoStatusService;
+
+    public InfoStatusController(InfoStatusService infoStatusService) {
+        this.infoStatusService = infoStatusService;
+    }
 
     @GetMapping("/ping")
     public String ping() {

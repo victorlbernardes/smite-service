@@ -1,12 +1,11 @@
 package br.com.victor.smite.controller;
 
-import br.com.victor.smite.model.God;
-import br.com.victor.smite.model.GodRecommendedItems;
-import br.com.victor.smite.model.Item;
-import br.com.victor.smite.model.ProLeagueSeasonDetail;
+import br.com.victor.smite.service.client.response.God;
+import br.com.victor.smite.service.client.response.GodRecommendedItems;
+import br.com.victor.smite.service.client.response.Item;
+import br.com.victor.smite.service.client.response.ProLeagueSeasonDetail;
 import br.com.victor.smite.service.GeneralService;
-import br.com.victor.smite.utils.GodSkin;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.victor.smite.service.client.response.GodSkin;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +19,11 @@ import java.util.List;
 @RequestMapping(path = "/general", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GeneralController {
 
-    @Autowired
     private GeneralService generalService;
+
+    public GeneralController(GeneralService generalService) {
+        this.generalService = generalService;
+    }
 
     @GetMapping("/get-items")
     public List<Item> getAllItens(Authentication authentication, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {

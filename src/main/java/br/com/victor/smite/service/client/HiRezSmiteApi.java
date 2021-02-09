@@ -1,7 +1,6 @@
-package br.com.victor.smite.client;
+package br.com.victor.smite.service.client;
 
-import br.com.victor.smite.model.*;
-import br.com.victor.smite.utils.GodSkin;
+import br.com.victor.smite.service.client.response.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

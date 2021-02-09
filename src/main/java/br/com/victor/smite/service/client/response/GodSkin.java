@@ -1,6 +1,5 @@
-package br.com.victor.smite.utils;
+package br.com.victor.smite.service.client.response;
 
-import br.com.victor.smite.model.HiRezApiModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
@@ -9,6 +8,7 @@ public class GodSkin extends HiRezApiModel {
     @JsonProperty("godIcon_URL")
     private String godIconUrl;
     private long godId;
+    @JsonProperty("god_name")
     private String godName;
     @JsonProperty("godSkin_URL")
     private String skinURL;

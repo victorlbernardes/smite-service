@@ -135,7 +135,7 @@
 					<appendAssemblyId>false</appendAssemblyId>
 					<archive>
 						<manifest>
-							<mainClass>br.com.victor.smite.SmiteServiceApplication</mainClass>
+							<mainClass>br.com.victor.smite.configuration.SmiteServiceApplication</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

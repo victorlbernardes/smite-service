@@ -1,4 +1,4 @@
-package br.com.victor.smite.utils;
+package br.com.victor.smite.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
