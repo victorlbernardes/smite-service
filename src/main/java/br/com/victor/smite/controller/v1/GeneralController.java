@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/general", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/v1/smite/general", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GeneralController {
 
     @Autowired
@@ -25,26 +25,26 @@ public class GeneralController {
 
     @GetMapping("/get-items")
     public List<Item> getAllItens(Authentication authentication, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
-        return this.generalService.getAllItens(authentication.getPrincipal().toString(), Integer.parseInt(language));
+        return this.generalService.getAllItens( Integer.parseInt(language));
     }
 
     @GetMapping("/get-gods")
     public List<God> getAllGods(Authentication authentication, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
-        return this.generalService.getAllGods(authentication.getPrincipal().toString(), Integer.parseInt(language));
+        return this.generalService.getAllGods(Integer.parseInt(language));
     }
 
     @GetMapping("/all-god-skin")
     public List<GodSkin> getAllGodSkin(Authentication authentication, @RequestParam(value = "godId") int godId, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
-        return this.generalService.getAllGodSkin(authentication.getPrincipal().toString(), godId, Integer.parseInt(language));
+        return this.generalService.getAllGodSkin(godId, Integer.parseInt(language));
     }
 
     @GetMapping("/god-recommended-items")
     public List<GodRecommendedItems> getGodRecommendedItems(Authentication authentication, @RequestParam(value = "godId") int godId, @RequestParam(value = "language", required = false, defaultValue = "1") String language) {
-        return this.generalService.getGodRecommendedItems(authentication.getPrincipal().toString(), godId, Integer.parseInt(language));
+        return this.generalService.getGodRecommendedItems(godId, Integer.parseInt(language));
     }
 
     @GetMapping("/pro-league-season")
     public List<ProLeagueSeasonDetail> proLeagueSeason(Authentication authentication) {
-        return this.generalService.proLeagueSeason(authentication.getPrincipal().toString());
+        return this.generalService.proLeagueSeason();
     }
 }

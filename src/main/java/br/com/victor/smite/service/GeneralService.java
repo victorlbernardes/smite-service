@@ -10,14 +10,13 @@ import java.util.List;
 
 public interface GeneralService {
 
-    public List<Item> getAllItens(String username, Integer language);
+    public List<Item> getAllItens(Integer language);
 
+    public List<God> getAllGods(Integer language);
 
-    public List<God> getAllGods(String username, Integer language);
+    public List<GodSkin> getAllGodSkin(int godId, Integer language);
 
-    public List<GodSkin> getAllGodSkin(String username, int godId, Integer language);
+    public List<GodRecommendedItems> getGodRecommendedItems(int godId, Integer language);
 
-    public List<GodRecommendedItems> getGodRecommendedItems(String username, int godId, Integer language);
-
-    public List<ProLeagueSeasonDetail> proLeagueSeason(String username) ;
+    public List<ProLeagueSeasonDetail> proLeagueSeason() ;
 }

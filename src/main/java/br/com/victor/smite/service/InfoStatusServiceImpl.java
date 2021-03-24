@@ -1,11 +1,9 @@
 package br.com.victor.smite.service;
 
 import br.com.victor.smite.service.client.HiRezSmiteApi;
-import br.com.victor.smite.entity.Player;
 import br.com.victor.smite.service.client.response.DataUsage;
 import br.com.victor.smite.service.client.response.HiRezServerStatus;
 import br.com.victor.smite.service.client.response.SmitePatchVersion;
-import br.com.victor.smite.repository.PlayerRepository;
 import br.com.victor.smite.utils.HashGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +20,7 @@ public class InfoStatusServiceImpl implements InfoStatusService{
     @Value("${auth.key}")
     private String authKey;
     @Autowired
-    private final PlayerRepository playerRepository;
+    private AuthenticationService authenticationService;
 
     private String date;
     private String signature;
@@ -30,43 +28,43 @@ public class InfoStatusServiceImpl implements InfoStatusService{
     @Autowired
     private final HiRezSmiteApi hiRezSmiteApi;
 
-    Logger logger = LoggerFactory.getLogger(InfoStatusService.class);
+    Logger logger = LoggerFactory.getLogger(InfoStatusServiceImpl.class);
 
-    public InfoStatusServiceImpl(HiRezSmiteApi hiRezSmiteApi, PlayerRepository playerRepository) {
+    public InfoStatusServiceImpl(HiRezSmiteApi hiRezSmiteApi, AuthenticationService authenticationService) {
         this.date = HashGenerator.getTimestampFormatted();
-        this.playerRepository = playerRepository;
+        this.authenticationService = authenticationService;
         this.hiRezSmiteApi = hiRezSmiteApi;
     }
-
+    
+    private String getLastSessionId(){
+        return this.authenticationService.createSession().getSessionId();
+    }
+    
     public String ping() {
         return this.hiRezSmiteApi.ping();
     }
 
-    public String testSession(String username) {
+    public String testSession() {
         logger.info("testSession");
-        Player player = playerRepository.findByUsername(username);
         this.signature = HashGenerator.getHash(devId, "testsession", authKey, this.date);
-        return hiRezSmiteApi.testSession(devId, this.signature, player.getLastSessionId(), this.date);
+        return hiRezSmiteApi.testSession(devId, this.signature, this.getLastSessionId(), this.date);
     }
 
-    public List<DataUsage> dataUsage(String username) {
+    public List<DataUsage> dataUsage() {
         logger.info("dataUsage");
-        Player player = playerRepository.findByUsername(username);
         this.signature = HashGenerator.getHash(devId, "getdataused", authKey, this.date);
-        return hiRezSmiteApi.dataUsage(devId, this.signature, player.getLastSessionId(), this.date);
+        return hiRezSmiteApi.dataUsage(devId, this.signature, this.getLastSessionId(), this.date);
     }
 
-    public List<HiRezServerStatus> hiRezServerStatus(String username) {
+    public List<HiRezServerStatus> hiRezServerStatus() {
         logger.info("hiRezServerStatus");
-        Player player = playerRepository.findByUsername(username);
         this.signature = HashGenerator.getHash(devId, "gethirezserverstatus", authKey, this.date);
-        return hiRezSmiteApi.hiRezServerStatus(devId, this.signature, player.getLastSessionId(), this.date);
+        return hiRezSmiteApi.hiRezServerStatus(devId, this.signature, this.getLastSessionId(), this.date);
     }
 
-    public SmitePatchVersion smitePatchVersion(String username) {
+    public SmitePatchVersion smitePatchVersion() {
         logger.info("smitePatchVersion");
-        Player player = playerRepository.findByUsername(username);
         this.signature = HashGenerator.getHash(devId, "getpatchinfo", authKey, this.date);
-        return hiRezSmiteApi.smitePatchVersion(devId, this.signature, player.getLastSessionId(), this.date);
+        return hiRezSmiteApi.smitePatchVersion(devId, this.signature, this.getLastSessionId(), this.date);
     }
 }

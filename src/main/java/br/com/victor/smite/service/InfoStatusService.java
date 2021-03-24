@@ -9,11 +9,11 @@ public interface InfoStatusService {
 
     public String ping();
 
-    public String testSession(String username);
+    public String testSession();
 
-    public List<DataUsage> dataUsage(String username);
+    public List<DataUsage> dataUsage();
 
-    public List<HiRezServerStatus> hiRezServerStatus(String username);
+    public List<HiRezServerStatus> hiRezServerStatus();
 
-    public SmitePatchVersion smitePatchVersion(String username);
+    public SmitePatchVersion smitePatchVersion();
 }
