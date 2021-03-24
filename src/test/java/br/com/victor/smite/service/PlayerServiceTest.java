@@ -1,9 +1,9 @@
 package br.com.victor.smite.service;
 
 import br.com.victor.smite.entity.Player;
-import br.com.victor.smite.model.Session;
+import br.com.victor.smite.service.client.response.Session;
 import br.com.victor.smite.repository.PlayerRepository;
-import br.com.victor.smite.client.HiRezSmiteApi;
+import br.com.victor.smite.service.client.HiRezSmiteApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
@@ -27,13 +27,13 @@ public class PlayerServiceTest {
     private PlayerRepository playerRepository;
 
     @InjectMocks
-    private PlayerService playerService;
+    private PlayerServiceImpl playerService;
 
     private final String USERNAME = "Akillian";
 
     @Before
     public void setUp(){
-        this.playerService = new PlayerService(hiRezSmiteApi, playerRepository); //inject the mock
+        this.playerService = new PlayerServiceImpl(hiRezSmiteApi, playerRepository); //inject the mock
     }
 
     @DisplayName("Testing Session creation Success")

@@ -1,9 +1,9 @@
-package br.com.victor.smite.controller;
+package br.com.victor.smite.controller.v1;
 
-import br.com.victor.smite.model.God;
-import br.com.victor.smite.model.GodRecommendedItems;
-import br.com.victor.smite.model.Item;
-import br.com.victor.smite.model.ProLeagueSeasonDetail;
+import br.com.victor.smite.service.client.response.God;
+import br.com.victor.smite.service.client.response.GodRecommendedItems;
+import br.com.victor.smite.service.client.response.Item;
+import br.com.victor.smite.service.client.response.ProLeagueSeasonDetail;
 import br.com.victor.smite.service.GeneralService;
 import br.com.victor.smite.utils.GodSkin;
 import org.springframework.beans.factory.annotation.Autowired;

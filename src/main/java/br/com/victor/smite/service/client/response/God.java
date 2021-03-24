@@ -1,4 +1,4 @@
-package br.com.victor.smite.model;
+package br.com.victor.smite.service.client.response;
 
 import br.com.victor.smite.utils.TextToBoolean;
 import com.fasterxml.jackson.annotation.JsonProperty;

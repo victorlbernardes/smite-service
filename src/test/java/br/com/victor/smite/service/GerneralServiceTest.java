@@ -1,11 +1,11 @@
 package br.com.victor.smite.service;
 
-import br.com.victor.smite.client.HiRezSmiteApi;
+import br.com.victor.smite.service.client.HiRezSmiteApi;
 import br.com.victor.smite.entity.Player;
-import br.com.victor.smite.model.God;
-import br.com.victor.smite.model.GodRecommendedItems;
-import br.com.victor.smite.model.Item;
-import br.com.victor.smite.model.ProLeagueSeasonDetail;
+import br.com.victor.smite.service.client.response.God;
+import br.com.victor.smite.service.client.response.GodRecommendedItems;
+import br.com.victor.smite.service.client.response.Item;
+import br.com.victor.smite.service.client.response.ProLeagueSeasonDetail;
 import br.com.victor.smite.repository.PlayerRepository;
 import br.com.victor.smite.utils.GodSkin;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -32,13 +32,13 @@ public class GerneralServiceTest {
     private PlayerRepository playerRepository;
 
     @InjectMocks
-    private GeneralService generalService;
+    private GeneralServiceImpl generalService;
 
     private final String USERNAME = "Akillian";
 
     @Before
     public void setUp(){
-        this.generalService = new GeneralService(hiRezSmiteApi, playerRepository); //inject the mock
+        this.generalService = new GeneralServiceImpl(hiRezSmiteApi, playerRepository); //inject the mock
     }
 
     @DisplayName("Testing Get All Items Success")

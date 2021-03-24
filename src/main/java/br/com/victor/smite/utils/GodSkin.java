@@ -1,6 +1,6 @@
 package br.com.victor.smite.utils;
 
-import br.com.victor.smite.model.HiRezApiModel;
+import br.com.victor.smite.service.client.response.HiRezApiModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 

@@ -8,5 +8,5 @@ CREATE TABLE player (
   last_session_id VARCHAR(250) DEFAULT NULL
 );
 
-INSERT INTO player (username, password) VALUES
-  ('Team Maya', '$2y$12$6dXGRIV0.F15uP6nx8.oru9oZ7oNR4l5CaHahlkLNb2RDib.1ZU5G';
+INSERT INTO player (player_id, username, password) VALUES
+  ('123456',  'Admin', '$2y$12$6dXGRIV0.F15uP6nx8.oru9oZ7oNR4l5CaHahlkLNb2RDib.1ZU5G');

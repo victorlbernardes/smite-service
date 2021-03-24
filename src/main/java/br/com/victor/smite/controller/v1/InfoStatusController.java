@@ -1,8 +1,8 @@
-package br.com.victor.smite.controller;
+package br.com.victor.smite.controller.v1;
 
-import br.com.victor.smite.model.DataUsage;
-import br.com.victor.smite.model.SmitePatchVersion;
-import br.com.victor.smite.model.HiRezServerStatus;
+import br.com.victor.smite.service.client.response.DataUsage;
+import br.com.victor.smite.service.client.response.SmitePatchVersion;
+import br.com.victor.smite.service.client.response.HiRezServerStatus;
 import br.com.victor.smite.service.InfoStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

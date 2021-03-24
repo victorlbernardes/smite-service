@@ -1,6 +1,6 @@
-package br.com.victor.smite.controller;
+package br.com.victor.smite.controller.v1;
 
-import br.com.victor.smite.model.Session;
+import br.com.victor.smite.service.client.response.Session;
 import br.com.victor.smite.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

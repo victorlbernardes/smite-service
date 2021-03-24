@@ -1,10 +1,10 @@
 package br.com.victor.smite.service;
 
 import br.com.victor.smite.entity.Player;
-import br.com.victor.smite.client.HiRezSmiteApi;
-import br.com.victor.smite.model.DataUsage;
-import br.com.victor.smite.model.HiRezServerStatus;
-import br.com.victor.smite.model.SmitePatchVersion;
+import br.com.victor.smite.service.client.HiRezSmiteApi;
+import br.com.victor.smite.service.client.response.DataUsage;
+import br.com.victor.smite.service.client.response.HiRezServerStatus;
+import br.com.victor.smite.service.client.response.SmitePatchVersion;
 import br.com.victor.smite.repository.PlayerRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,13 +31,13 @@ public class InfoStatusServiceTest {
     private PlayerRepository playerRepository;
 
     @InjectMocks
-    private InfoStatusService infoStatusService;
+    private InfoStatusServiceImpl infoStatusService;
 
     private final String USERNAME = "Akillian";
 
     @Before
     public void setUp(){
-        this.infoStatusService = new InfoStatusService(hiRezSmiteApi, playerRepository); //inject the mock
+        this.infoStatusService = new InfoStatusServiceImpl(hiRezSmiteApi, playerRepository); //inject the mock
     }
 
     @DisplayName("Testing ping")
