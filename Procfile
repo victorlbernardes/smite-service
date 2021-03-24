@@ -1,0 +1,1 @@
+web: java -jar target/smite-service.jar
