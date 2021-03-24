@@ -4,7 +4,7 @@ import br.com.victor.smite.service.client.HiRezSmiteApi;
 import br.com.victor.smite.entity.Player;
 import br.com.victor.smite.service.client.response.Session;
 import br.com.victor.smite.repository.PlayerRepository;
-import br.com.victor.smite.utils.Utils;
+import br.com.victor.smite.utils.HashGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +31,12 @@ public class PlayerServiceImpl implements PlayerService {
     public PlayerServiceImpl(HiRezSmiteApi hiRezSmiteApi, PlayerRepository playerRepository) {
         this.hiRezSmiteApi = hiRezSmiteApi;
         this.playerRepository = playerRepository;
-        this.date = Utils.getTimestampFormatted();
+        this.date = HashGenerator.getTimestampFormatted();
     }
 
     public Session createSession(String username) {
         logger.info("createSession");
-        this.signature = Utils.getHash(devId, "createsession", authKey, this.date);
+        this.signature = HashGenerator.getHash(devId, "createsession", authKey, this.date);
 
         Session session = hiRezSmiteApi.createSession(devId, this.signature, this.date);
         Player player = playerRepository.findByUsername(username);

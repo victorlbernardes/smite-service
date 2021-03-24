@@ -5,7 +5,7 @@ import br.com.victor.smite.service.client.response.GodRecommendedItems;
 import br.com.victor.smite.service.client.response.Item;
 import br.com.victor.smite.service.client.response.ProLeagueSeasonDetail;
 import br.com.victor.smite.service.GeneralService;
-import br.com.victor.smite.utils.GodSkin;
+import br.com.victor.smite.service.client.response.GodSkin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;

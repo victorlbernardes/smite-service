@@ -1,4 +1,4 @@
-package br.com.victor.smite.utils;
+package br.com.victor.smite.service.client.response;
 
 import br.com.victor.smite.service.client.response.HiRezApiModel;
 import com.fasterxml.jackson.annotation.JsonProperty;

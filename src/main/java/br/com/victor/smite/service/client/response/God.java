@@ -32,15 +32,15 @@ public class God extends HiRezApiModel {
     private String ability5Name;
 
     @JsonProperty("abilityDescription1")
-    private ItemDescription abilityDescription1;
+    private GodItemDescription abilityDescription1;
     @JsonProperty("abilityDescription2")
-    private ItemDescription abilityDescription2;
+    private GodItemDescription abilityDescription2;
     @JsonProperty("abilityDescription3")
-    private ItemDescription abilityDescription3;
+    private GodItemDescription abilityDescription3;
     @JsonProperty("abilityDescription4")
-    private ItemDescription abilityDescription4;
+    private GodItemDescription abilityDescription4;
     @JsonProperty("abilityDescription5")
-    private ItemDescription abilityDescription5;
+    private GodItemDescription abilityDescription5;
 
     @JsonProperty("AbilityId1")
     private long ability1Id;
@@ -58,7 +58,7 @@ public class God extends HiRezApiModel {
     @JsonProperty("AttackSpeedPerLevel")
     private double attackSpeedPerLevel;
     @JsonProperty("basicAttack")
-    private ItemDescription basicAttack;
+    private GodItemDescription basicAttack;
     @JsonProperty("Cons")
     private String cons;
 
@@ -134,40 +134,4 @@ public class God extends HiRezApiModel {
     private String title;
     @JsonProperty("Type")
     private String type;
-
-    @Getter
-    public static class Description {
-        private String cooldown;
-        private String cost;
-        private String description;
-        @JsonProperty("menuitems")
-        private List<Item> menuItems;
-        @JsonProperty("rankitems")
-        private List<Item> rankItems;
-        private String secondaryDescription;
-
-        @Getter
-        public static class Item {
-            private String description;
-            private String value;
-        }
-    }
-
-    @Getter
-    public static class ItemDescription {
-        @JsonProperty("itemDescription")
-        private Description itemDescription;
-    }
-
-    @Getter
-    public static class Ability {
-        @JsonProperty("Description")
-        private ItemDescription description;
-        @JsonProperty("Id")
-        private long id;
-        @JsonProperty("Summary")
-        private String name;
-        @JsonProperty("URL")
-        private String url;
-    }
 }

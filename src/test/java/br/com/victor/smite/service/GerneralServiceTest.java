@@ -7,7 +7,7 @@ import br.com.victor.smite.service.client.response.GodRecommendedItems;
 import br.com.victor.smite.service.client.response.Item;
 import br.com.victor.smite.service.client.response.ProLeagueSeasonDetail;
 import br.com.victor.smite.repository.PlayerRepository;
-import br.com.victor.smite.utils.GodSkin;
+import br.com.victor.smite.service.client.response.GodSkin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;

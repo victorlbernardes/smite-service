@@ -1,5 +1,6 @@
 package br.com.victor.smite.service.client.response;
 
+import br.com.victor.smite.enums.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
@@ -13,8 +14,4 @@ public class HiRezServerStatus extends HiRezApiModel {
     private Status status;
     private String version;
 
-    public enum Status {
-        UP,
-        DOWN
-    }
 }

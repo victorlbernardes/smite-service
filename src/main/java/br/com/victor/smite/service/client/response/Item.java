@@ -39,26 +39,4 @@ public class Item extends HiRezApiModel {
     @JsonProperty("itemIcon_URL")
     private String iconURL;
 
-    @Getter
-    private static class ItemDescription {
-        @JsonProperty("Description")
-        private String description;
-
-        @JsonProperty("SecondaryDescription")
-        private String secondaryDescription;
-
-        @JsonProperty("Menuitems")
-        private List<Menuitems> menuItems;
-    }
-
-    @Getter
-    public static class Menuitems {
-        @JsonProperty("Description")
-        private String description;
-
-        @JsonProperty("Value")
-        private String value;
-    }
-
-
 }

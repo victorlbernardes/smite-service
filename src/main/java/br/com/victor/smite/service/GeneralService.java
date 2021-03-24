@@ -4,7 +4,7 @@ import br.com.victor.smite.service.client.response.God;
 import br.com.victor.smite.service.client.response.GodRecommendedItems;
 import br.com.victor.smite.service.client.response.Item;
 import br.com.victor.smite.service.client.response.ProLeagueSeasonDetail;
-import br.com.victor.smite.utils.GodSkin;
+import br.com.victor.smite.service.client.response.GodSkin;
 
 import java.util.List;
 
