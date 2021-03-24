@@ -1,4 +1,4 @@
-package br.com.victor.smite.model;
+package br.com.victor.smite.service.client.response;
 
 import br.com.victor.smite.utils.TextToBoolean;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,27 +38,5 @@ public class Item extends HiRezApiModel {
     private String type;
     @JsonProperty("itemIcon_URL")
     private String iconURL;
-
-    @Getter
-    private static class ItemDescription {
-        @JsonProperty("Description")
-        private String description;
-
-        @JsonProperty("SecondaryDescription")
-        private String secondaryDescription;
-
-        @JsonProperty("Menuitems")
-        private List<Menuitems> menuItems;
-    }
-
-    @Getter
-    public static class Menuitems {
-        @JsonProperty("Description")
-        private String description;
-
-        @JsonProperty("Value")
-        private String value;
-    }
-
 
 }

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
-public class Utils {
+public class HashGenerator {
 
     public static String getHash(String devId, String path, String authKey, String date) {
 

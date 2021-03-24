@@ -1,8 +1,8 @@
-package br.com.victor.smite.controller;
+package br.com.victor.smite.controller.v1;
 
-import br.com.victor.smite.model.DataUsage;
-import br.com.victor.smite.model.SmitePatchVersion;
-import br.com.victor.smite.model.HiRezServerStatus;
+import br.com.victor.smite.service.client.response.DataUsage;
+import br.com.victor.smite.service.client.response.SmitePatchVersion;
+import br.com.victor.smite.service.client.response.HiRezServerStatus;
 import br.com.victor.smite.service.InfoStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/info/status", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/v1/smite/info/status", produces = MediaType.APPLICATION_JSON_VALUE)
 public class InfoStatusController {
 
     @Autowired
@@ -27,21 +27,21 @@ public class InfoStatusController {
 
     @GetMapping("/test-session")
     public String testSession(Authentication authentication) {
-        return this.infoStatusService.testSession(authentication.getPrincipal().toString());
+        return this.infoStatusService.testSession();
     }
 
     @GetMapping("/data-usage")
     public List<DataUsage> dataUsage(Authentication authentication) {
-        return this.infoStatusService.dataUsage(authentication.getPrincipal().toString());
+        return this.infoStatusService.dataUsage();
     }
 
     @GetMapping("/hi-rez-server-status")
     public List<HiRezServerStatus> hiRezServerStatus(Authentication authentication) {
-        return this.infoStatusService.hiRezServerStatus(authentication.getPrincipal().toString());
+        return this.infoStatusService.hiRezServerStatus();
     }
 
     @GetMapping("/smite-patch-version")
     public SmitePatchVersion smitePatchVersion(Authentication authentication) {
-        return this.infoStatusService.smitePatchVersion(authentication.getPrincipal().toString());
+        return this.infoStatusService.smitePatchVersion();
     }
 }
